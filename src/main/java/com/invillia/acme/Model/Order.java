@@ -4,12 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
@@ -38,9 +35,6 @@ public class Order {
     @OneToMany (fetch = FetchType.LAZY, targetEntity = OrderItem.class)
     private Set<OrderItem> items = new HashSet<>();
 
-    @OneToOne(fetch = FetchType.LAZY, targetEntity = Payment.class)
-    @JsonIgnore
-    private Payment payment;
 
     public Set<OrderItem> getItems() {
         return items;
