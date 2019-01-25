@@ -6,13 +6,11 @@ import com.invillia.acme.Model.OrderItem;
 import com.invillia.acme.Repository.ItemRepository;
 import com.invillia.acme.Repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.util.NoSuchElementException;
 
 @RestController
 public class OrderController {

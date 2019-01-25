@@ -35,8 +35,12 @@ public class Order {
     @Column(name = "status")
     private String status;
 
-    @OneToMany (fetch = FetchType.LAZY, targetEntity=OrderItem.class)
+    @OneToMany (fetch = FetchType.LAZY, targetEntity = OrderItem.class)
     private Set<OrderItem> items = new HashSet<>();
+
+    @OneToOne(fetch = FetchType.LAZY, targetEntity = Payment.class)
+    @JsonIgnore
+    private Payment payment;
 
     public Set<OrderItem> getItems() {
         return items;

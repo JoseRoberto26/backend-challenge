@@ -1,11 +1,13 @@
 package com.invillia.acme.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "payment")
@@ -23,15 +25,15 @@ public class Payment {
     private String status;
 
     @NotNull
-    @Size(max = 16)
     @Column(name = "cc_number")
     protected Long creditCardNumber;
 
     @NotNull
     @Column(name = "payment_date")
+    @JsonIgnore
     private Timestamp paymentDate;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
     private Order order;
 
 
@@ -49,5 +51,25 @@ public class Payment {
 
     public void setPaymentDate(Timestamp paymentDate) {
         this.paymentDate = paymentDate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getCreditCardNumber() {
+        return creditCardNumber;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }
